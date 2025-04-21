@@ -15,7 +15,7 @@ public class RabbitsInForest781 {
      */
 
     public static void main(String[] args) {
-        System.out.println(new RabbitsInForest781().numRabbits(new int[]{0, 3, 2, 0, 3, 3, 4, 2, 4, 3, 2, 4, 4, 3, 0, 1, 3, 4, 4, 3}));
+        System.out.println(new RabbitsInForest781().numRabbits(new int[]{1, 1, 2}));
     }
 
     public int numRabbits(int[] answers) {
@@ -29,16 +29,10 @@ public class RabbitsInForest781 {
 
         int totalRabbits = 0;
         for (Map.Entry<Integer, Integer> entry : colorGroup.entrySet()) {
-            if (entry.getKey() == 0) totalRabbits += entry.getValue();
-            else if (entry.getKey() == 1) {
-                int numberOf1s = entry.getValue();
-                totalRabbits += numberOf1s % 2 == 0 ? numberOf1s : numberOf1s + 1;
-            } else {
-                int groupSize = entry.getKey() + 1;
-                int count = entry.getValue();
-                int groups = (int) Math.ceil((double) count / groupSize);
-                totalRabbits += groups * groupSize;
-            }
+            int groupSize = entry.getKey() + 1;
+            int count = entry.getValue();
+            int groups = (int) Math.ceil((double) count / groupSize);
+            totalRabbits += groups * groupSize;
         }
         return totalRabbits;
     }
